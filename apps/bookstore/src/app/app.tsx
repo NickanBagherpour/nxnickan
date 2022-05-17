@@ -1,17 +1,34 @@
-import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
+import {Route, Link, Navigate, Routes} from 'react-router-dom';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+import {BooksFeature} from '@nxnickan/books/feature';
+import {
+  GlobalStyles,
+  Header,
+  Main,
+  NavigationItem,
+  NavigationList
+} from '@nxnickan/ui';
 
 export function App() {
   return (
-    <StyledApp>
-      <header>
+    <>
+      <GlobalStyles/>
+      <Header>
         <h1>Bookstore</h1>
-      </header>
-    </StyledApp>
+        <NavigationList>
+          <NavigationItem>
+            <Link to="/books">Books</Link>
+          </NavigationItem>
+        </NavigationList>
+      </Header>
+      <Main>
+        <Routes>
+          <Route path='/' element={<Navigate replace to='/books'/>}/>
+          <Route path="/books" element={<BooksFeature/>}/>
+        </Routes>
+      </Main>
+    </>
+
   );
 }
 
