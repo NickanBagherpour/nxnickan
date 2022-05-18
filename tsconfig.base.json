@@ -18,6 +18,7 @@
       "@nxnickan/books/data-access": ["libs/books/data-access/src/index.ts"],
       "@nxnickan/books/feature": ["libs/books/feature/src/index.ts"],
       "@nxnickan/books/ui": ["libs/books/ui/src/index.ts"],
+      "@nxnickan/shared-models": ["libs/shared-models/src/index.ts"],
       "@nxnickan/ui": ["libs/ui/src/index.ts"]
     }
   },

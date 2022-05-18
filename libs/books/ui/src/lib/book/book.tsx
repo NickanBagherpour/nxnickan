@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import {Button} from '@nxnickan/ui';
+import {IBook} from "@nxnickan/shared-models";
 
 export interface BookProps {
-  book: any;
-  onAdd: (book: any) => void;
+  book: IBook;
+  onAdd: (book: IBook) => void;
 }
 
 const StyledBook = styled.div`
