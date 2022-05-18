@@ -6,8 +6,10 @@ import {
   Header,
   Main,
   NavigationItem,
-  NavigationList
+  NavigationList,
 } from '@nxnickan/ui';
+
+import {CartFeature} from '@nxnickan/cart/feature';
 
 export function App() {
   return (
@@ -18,17 +20,27 @@ export function App() {
         <NavigationList>
           <NavigationItem>
             <Link to="/books">Books</Link>
+            <Link to="/feature">CartFeature</Link>
           </NavigationItem>
         </NavigationList>
       </Header>
       <Main>
         <Routes>
-          <Route path='/' element={<Navigate replace to='/books'/>}/>
-          <Route path="/books" element={<BooksFeature/>}/>
+          <Route path="/"
+                 element={<Navigate to="/books"/>}
+          >
+          </Route>
+          <Route
+            path="/books"
+            element={<BooksFeature/>}
+          />
+          <Route
+            path="/cart"
+            element={<CartFeature/>}
+          />
         </Routes>
       </Main>
     </>
-
   );
 }
 

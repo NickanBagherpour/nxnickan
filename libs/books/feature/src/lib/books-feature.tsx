@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react';
+import {useDispatch} from "react-redux";
 
-import {getBooks} from '@nxnickan/books/data-access';
 import {Books} from '@nxnickan/books/ui';
 import {IBook} from "@nxnickan/shared-models";
+import {getBooks} from '@nxnickan/books/data-access';
+import {cartActions} from "@nxnickan/cart/data-access";
 
 export const BooksFeature = () => {
   const [books, setBooks] = useState<IBook[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getBooks().then(setBooks);
@@ -14,9 +17,19 @@ export const BooksFeature = () => {
   return (
     <>
       <h2>Books</h2>
-      {/* Pass a stub callback for now */}
-      {/* We'll implement this properly in Chapter 4 */}
-      <Books books={books} onAdd={book => alert(`Added ${book.title}`)} />
+      <Books
+        books={books}
+        onAdd={(book) =>
+          // Using add action from cart slice
+          dispatch(
+            cartActions.add({
+              id: book.id,
+              description: book.title,
+              cost: book.price,
+            })
+          )
+        }
+      />
     </>
   );
 };
